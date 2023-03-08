@@ -1,6 +1,11 @@
+//Affichages
 import { displayRecipes } from "../utils/display.js";
 import { afficheListe } from "../utils/display.js";
+//Filtrage
 import { filtrageInputPrincipal } from "../utils/filtrage.js";
+import { filtrageIngredients } from "../utils/filtrage.js";
+import { filtrageAppareils } from "../utils/filtrage.js";
+import { filtrageUstensils } from "../utils/filtrage.js";
 
 let recettesInitiales = [];
 let recettesFiltrees = [];
@@ -32,6 +37,7 @@ async function init() {
   // Récupère les datas
   recettesInitiales = await getRecettes();
   afficheRecettes(recettesInitiales);
+  recettesFiltrees = recettesInitiales;
   // Récupère la valeur saisie de la zone recherche et affiche les recettes triees
   const modalRecherche = document.querySelector(".recherche__bouton");
   modalRecherche.addEventListener("click", (e) => {
@@ -45,15 +51,19 @@ async function init() {
   const triUstensils = document.querySelector(".btnUstensils");
   triIngredients.addEventListener("click", (e) => {
     e.preventDefault();
-    listeIngredients = afficheListe("I");
+    listeIngredients = filtrageIngredients(recettesFiltrees);
+    console.log(listeIngredients);
+    afficheListe("I", listeIngredients, listeAppareils, listeUstensils);
   });
   triAppareils.addEventListener("click", (e) => {
     e.preventDefault();
-    listeAppareils = afficheListe("A");
+    listeIngredients = filtrageAppareils(recettesFiltrees);
+    afficheListe("A", listeIngredients, listeAppareils, listeUstensils);
   });
   triUstensils.addEventListener("click", (e) => {
     e.preventDefault();
-    listeUstensils = afficheListe("U");
+    listeIngredients = filtrageUstensils(recettesFiltrees);
+    afficheListe("U", listeIngredients, listeAppareils, listeUstensils);
   });
 }
 

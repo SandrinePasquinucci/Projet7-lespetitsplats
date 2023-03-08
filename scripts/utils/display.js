@@ -1,14 +1,5 @@
 export function displayRecipes(recipe) {
-  const {
-    id,
-    name,
-    servings,
-    ingredients,
-    time,
-    description,
-    appliance,
-    ustensils,
-  } = recipe;
+  const { name, ingredients, time, description } = recipe;
 
   const card = document.createElement("div");
   const img = document.createElement("img");
@@ -65,9 +56,14 @@ export function displayRecipes(recipe) {
   return card;
 }
 
-export function afficheListe(type) {
-  //rajout des ingrédients conenus dans les recettes
-  //background-color: #3282f7;
+export function afficheListe(
+  type,
+  listeIngrédients,
+  listeAppareils,
+  listeUstensils
+) {
+  //rajout des ingrédients connus dans les recettes
+
   if (type == "I") {
     const btnIngredients = document.querySelector(".btnIngredients");
     btnIngredients.style.visibility = "hidden";
