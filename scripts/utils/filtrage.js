@@ -44,9 +44,13 @@ export function filtrageInputPrincipal(recipes) {
   return recettesTriees;
 }
 export function filtrageIngredients(recettesFiltrees) {
+  const touslesIngredients = [];
   recettesFiltrees.forEach((recette) =>
-    recette.ingredients.filter((x, i) => recette.ingredients.indexOf(x) === i)
+    recette.ingredients.forEach(
+      (ingredient) => (touslesIngredients += ingredient)
+    )
   );
+  touslesIngredients.filter((x, i) => touslesIngredients.indexOf(x) === i);
 }
 export function filtrageAppareils(recettesFiltrees) {
   console.log("A");

@@ -53,11 +53,11 @@ async function init() {
     e.preventDefault();
     listeIngredients = filtrageIngredients(recettesFiltrees);
     console.log(listeIngredients);
-    afficheListe("I", listeIngredients, listeAppareils, listeUstensils);
   });
   triAppareils.addEventListener("click", (e) => {
     e.preventDefault();
-    listeIngredients = filtrageAppareils(recettesFiltrees);
+    const touslesIngredients = filtrageAppareils(recettesFiltrees);
+
     afficheListe("A", listeIngredients, listeAppareils, listeUstensils);
   });
   triUstensils.addEventListener("click", (e) => {
