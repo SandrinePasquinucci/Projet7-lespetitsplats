@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Les Petits Plats</title>
+    <script
+      src="https://kit.fontawesome.com/177a2029ba.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Lato:wght@400;700&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- affichage du logo dans l'onglet pour eviter l'erreur favicon.ico -->
+    <link rel="icon" href="./assets/images/logo.png" />
+  </head>
+  <body>
+    <!-- En-tête du site  -->
+    <header>
+      <img src="assets/images/logo.png" class="logo" alt="logo" />
+      <h1 class="header__entete">Les Petits Plats</h1>
+    </header>
+    <main>
+      <!-- Section : Recherche , saisir un mot à rechercher-->
+      <section class="zonerecherche">
+        <form method="post" action="#" for="recherche__formulaire">
+          <input
+            type="text"
+            name="recherche__texte"
+            id="recherche__texte"
+            placeholder="Rechercher une recette"
+          />
+          <button class="recherche__bouton">
+            <i class="recherche__bouton__i fas fa-magnifying-glass fa-2x"></i>
+          </button>
+        </form>
+        <div class="messerreur"></div>
+      </section>
+      <!-- Section : Catégories, recherche par catégorie (ingrédient appareil ou ustensil) -->
+      <section id="categories">
+        <button class="btnIngredients">
+          <div class="categorie__ingredients">Ingrédients</div>
+          <i class="flechebas fa-solid fa-chevron-down"></i>
+        </button>
+        <button class="btnAppareils">
+          <div class="categorie__appareils">Appareils</div>
+          <i class="flechebas fa-solid fa-chevron-down"></i>
+        </button>
+        <button class="btnUstensils">
+          <div class="categorie__ustensils">Ustensils</div>
+          <i class="flechebas fa-solid fa-chevron-down"></i>
+        </button>
+      </section>
+      <!-- Section : Tri , affiche les items à partir du fichier de recette -->
+      <section id="tri">
+        <div class="tri__recherche">
+          <input
+            type="text"
+            name="recherche__textetri"
+            class="recherche__textetri"
+            placeholder="Rechercher un ingrédient"
+          />
+          <button class="recherche__boutontri">
+            <i class="flechehaut fa-solid fa-chevron-up"></i>
+          </button>
+          <div class="ListeTri"></div>
+        </div>
+      </section>
+
+      <!-- Section : Tri , affiche les items à partir du fichier de recette -->
+      <section id="recettes"></section>
+    </main>
+    <script src="scripts/pages/index.js" type="module" defer></script>
+  </body>
+</html>

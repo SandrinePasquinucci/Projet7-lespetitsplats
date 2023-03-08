@@ -1,0 +1,225 @@
+body {
+  margin: 0;
+}
+
+/* entete */
+header {
+  display: flex;
+  flex-direction: column;
+  padding-top: 42px;
+  align-items: center;
+  height: 52px;
+}
+
+h1 {
+  color: #d04f4f;
+  font-family: "DM Sans";
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: -5px;
+}
+
+.logo {
+  width: 50.48px;
+  height: 46.29px;
+}
+
+main {
+  margin: 0 100px;
+}
+/* RESPONSIVE DESIGN : Version Tablettes */
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+}
+/* RESPONSIVE : Version Smartphones */
+
+@media all and (min-width: 320px) and (max-width: 768px) {
+  main {
+    margin: 0;
+  }
+}
+/* Section recherche */
+.zonerecherche {
+  width: auto;
+
+  padding-top: 50px;
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+}
+.zonerecherche input {
+  background: #e7e7e7;
+  border: none;
+  border-radius: 5px;
+  width: 95%;
+  height: 69px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 30px;
+}
+
+.zonerecherche input::placeholder {
+  color: #000;
+  opacity: 0.25;
+  font-size: 18px;
+}
+
+.recherche__bouton {
+  background: transparent;
+  border: none;
+}
+
+.recherche__bouton__i {
+  position: absolute;
+  right: 33px;
+  top: 72px;
+}
+.messerreur {
+  font-family: "Lato";
+  font-size: 13px;
+  font-weight: 700;
+  color: #d04f4f;
+}
+
+/* Section categories */
+
+#categories {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btnIngredients,
+.btnAppareils,
+.btnUstensils {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.btnIngredients {
+  background-color: #3282f7;
+}
+.btnAppareils {
+  background-color: #68d9a4;
+}
+.btnUstensils {
+  background-color: #ed6454;
+}
+/* Section tri */
+
+#tri {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 700;
+  visibility: hidden;
+}
+
+/* Section recettes */
+
+#recettes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.card img {
+  background-color: #c7bebe;
+  width: 100%;
+  height: 178px;
+  border-radius: 5px 5px 0px 0px;
+  object-fit: cover;
+}
+
+.presentation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.descr {
+  display: flex;
+  flex-direction: column;
+  background-color: #e7e7e7;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-bottom: 10px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+}
+.titre {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 400;
+  flex-direction: row;
+  width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.temps {
+  font-family: "Lato";
+  font-size: 18px;
+  font-weight: 700;
+}
+.tempsIcone {
+  display: flex;
+  align-items: center;
+}
+.recettes {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 400;
+  width: 45%;
+  height: 100px;
+  overflow: scroll;
+  text-align: left;
+  text-overflow: ellipsis;
+  border-radius: 0px 0px 5px 0px;
+}
+.ingr {
+  font-family: "Lato";
+  font-size: 12px;
+  font-weight: 700;
+  width: 45%;
+  height: 109px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 0px 0px 0 5px;
+}
+/* RESPONSIVE DESIGN : Version Tablettes */
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+  .card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+/* RESPONSIVE : Version Smartphones */
+@media all and (min-width: 320px) and (max-width: 768px) {
+  .card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
