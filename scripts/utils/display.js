@@ -63,7 +63,6 @@ export function afficheListe(
   listeUstensils
 ) {
   //rajout des ingrédients connus dans les recettes
-
   if (type == "I") {
     const btnIngredients = document.querySelector(".btnIngredients");
     btnIngredients.style.visibility = "hidden";

@@ -56,8 +56,7 @@ async function init() {
   });
   triAppareils.addEventListener("click", (e) => {
     e.preventDefault();
-    const touslesIngredients = filtrageAppareils(recettesFiltrees);
-
+    listeAppareils = filtrageAppareils(recettesFiltrees);
     afficheListe("A", listeIngredients, listeAppareils, listeUstensils);
   });
   triUstensils.addEventListener("click", (e) => {
