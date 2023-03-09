@@ -2,7 +2,7 @@
     "recipes": [
     {
         "id": 1,
-        "name" : "Limonade de Coco",
+        "name" : "Limonade de Cocochonou",
         "servings" : 1,
         "ingredients": [
 
@@ -21,7 +21,7 @@
                 "unit" : "cuillères à soupe"
             },
             {
-                "ingredient" : "Sucre",
+                "ingredient" : "Sucrinou",
                 "quantity" : 30,
                 "unit" : "grammes"
             },

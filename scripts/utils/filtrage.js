@@ -1,6 +1,14 @@
+function normalizeChaine(chaine) {
+  const minuscule = chaine.trim().toLowerCase();
+
+  const accent = minuscule.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return accent;
+}
+
 export function filtrageInputPrincipal(recipes) {
   const champsSaisi = document.getElementById("recherche__texte");
   const messerreur = document.querySelector(".messerreur");
+  var recettesTriees = [];
   //validation du nombre de caractère saisi
   if (champsSaisi.value.length < 3 && champsSaisi.value.length != 0) {
     messerreur.style.display = "block";
@@ -13,48 +21,78 @@ export function filtrageInputPrincipal(recipes) {
     messerreur.style.display = "none";
   }
 
-  //   var recettesTriees = recipes.filter(function (recipe) {
-  //     console.log(recipe.name);
-  //     console.log(champsSaisi.value);
-  //     if (recipe.name.toLowerCase() === champsSaisi.value.toLowerCase())
-  //       return true;
-
-  //   });
-  //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
-  //https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-  console.log(champsSaisi.value.length);
   if (champsSaisi.value.length === 0) {
-    recettesTriees = recipes;
+    return recipes;
   } else {
-    const regex = new RegExp(`${champsSaisi.value.trim().toLowerCase()}`);
+    // const champsSaisiFormate = normalizeChaine(champsSaisi.value);
+
+    // var recettesTriees = recipes.filter(function (recipe) {
+    //   return recipe.name.toLowerCase().includes(champsSaisiFormate);
+    // });
+    // return recettesTriees;
+    const champsSaisiFormate = normalizeChaine(champsSaisi.value);
+
     var recettesTriees = recipes.filter(function (recipe) {
-      if (regex.test(recipe.name)) {
-        return true;
-      } else if (regex.test(recipe.description)) {
-        return true;
-      }
-      recipe.ingredients.forEach(({ ingredient }) => {
-        if (regex.test(ingredient)) {
-          return true;
+      if (normalizeChaine(recipe.name).includes(champsSaisiFormate) === true) {
+        return normalizeChaine(recipe.name).includes(champsSaisiFormate);
+      } else {
+        if (
+          normalizeChaine(recipe.description).includes(champsSaisiFormate) ===
+          true
+        ) {
+          return normalizeChaine(recipe.description)
+            .toLowerCase()
+            .includes(champsSaisiFormate);
+        } else {
+          recipe.ingredients.forEach(({ ingredient }) => {
+            if (
+              normalizeChaine(ingredient).includes(champsSaisiFormate) === true
+            ) {
+              return normalizeChaine(ingredient)
+                .toLowerCase()
+                .includes(champsSaisiFormate);
+            }
+          });
         }
-      });
+      }
     });
+    return recettesTriees;
   }
-  console.log(recettesTriees);
-  return recettesTriees;
 }
 export function filtrageIngredients(recettesFiltrees) {
-  const touslesIngredients = [];
-  recettesFiltrees.forEach((recette) =>
-    recette.ingredients.forEach(
-      (ingredient) => (touslesIngredients += ingredient)
-    )
-  );
-  touslesIngredients.filter((x, i) => touslesIngredients.indexOf(x) === i);
+  var ingredients = [];
+  let j = 0;
+  for (let i = 0; i < recettesFiltrees.length; i++) {
+    for (let k = 0; k < recettesFiltrees[i].ingredients.length; k++) {
+      ingredients[j] = recettesFiltrees[i].ingredients[k].ingredient;
+      ingredients[j] = normalizeChaine(ingredients[j]);
+      j++;
+    }
+  }
+
+  return ingredients.filter((x, i) => ingredients.indexOf(x) === i);
 }
 export function filtrageAppareils(recettesFiltrees) {
-  console.log("A");
+  var appliances = [];
+  let j = 0;
+  for (let i = 0; i < recettesFiltrees.length; i++) {
+    appliances[j] = recettesFiltrees[i].appliance;
+    appliances[j] = normalizeChaine(appliances[j]);
+    j++;
+  }
+
+  return appliances.filter((x, i) => appliances.indexOf(x) === i);
 }
 export function filtrageUstensils(recettesFiltrees) {
-  console.log("U");
+  var ustensils = [];
+  let j = 0;
+  for (let i = 0; i < recettesFiltrees.length; i++) {
+    for (let k = 0; k < recettesFiltrees[i].ustensils.length; k++) {
+      ustensils[j] = recettesFiltrees[i].ustensils[k];
+      ustensils[j] = normalizeChaine(ustensils[j]);
+      j++;
+    }
+  }
+
+  return ustensils.filter((x, i) => ustensils.indexOf(x) === i);
 }

@@ -1,17 +1,22 @@
 //Affichages
-import { displayRecipes } from "../utils/display.js";
-import { afficheListe } from "../utils/display.js";
+import { displayRecipes, afficheListe } from "../utils/display.js";
+
 //Filtrage
-import { filtrageInputPrincipal } from "../utils/filtrage.js";
-import { filtrageIngredients } from "../utils/filtrage.js";
-import { filtrageAppareils } from "../utils/filtrage.js";
-import { filtrageUstensils } from "../utils/filtrage.js";
+import {
+  filtrageInputPrincipal,
+  filtrageIngredients,
+  filtrageAppareils,
+  filtrageUstensils,
+} from "../utils/filtrage.js";
 
 let recettesInitiales = [];
 let recettesFiltrees = [];
 let listeIngredients = [];
 let listeAppareils = [];
 let listeUstensils = [];
+
+//Convertir les chaines de caractères en minuscule et sans accents
+import { normalizeChaine } from "../utils/normalize.js";
 
 async function getRecettes() {
   return fetch("./data/recipes.json")
@@ -38,11 +43,15 @@ async function init() {
   recettesInitiales = await getRecettes();
   afficheRecettes(recettesInitiales);
   recettesFiltrees = recettesInitiales;
+
   // Récupère la valeur saisie de la zone recherche et affiche les recettes triees
-  const modalRecherche = document.querySelector(".recherche__bouton");
-  modalRecherche.addEventListener("click", (e) => {
+  //const modalRecherche = document.querySelector(".recherche__bouton");
+  const modalRecherche = document.getElementById("recherche__texte");
+
+  modalRecherche.addEventListener("keyup", (e) => {
     e.preventDefault();
     recettesFiltrees = filtrageInputPrincipal(recettesInitiales);
+
     afficheRecettes(recettesFiltrees);
   });
   //Affiche les critères de tri par catégories
@@ -52,16 +61,18 @@ async function init() {
   triIngredients.addEventListener("click", (e) => {
     e.preventDefault();
     listeIngredients = filtrageIngredients(recettesFiltrees);
-    console.log(listeIngredients);
+
+    afficheListe("I", listeIngredients, listeAppareils, listeUstensils);
   });
   triAppareils.addEventListener("click", (e) => {
     e.preventDefault();
     listeAppareils = filtrageAppareils(recettesFiltrees);
+
     afficheListe("A", listeIngredients, listeAppareils, listeUstensils);
   });
   triUstensils.addEventListener("click", (e) => {
     e.preventDefault();
-    listeIngredients = filtrageUstensils(recettesFiltrees);
+    listeUstensils = filtrageUstensils(recettesFiltrees);
     afficheListe("U", listeIngredients, listeAppareils, listeUstensils);
   });
 }

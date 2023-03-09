@@ -58,14 +58,16 @@ export function displayRecipes(recipe) {
 
 export function afficheListe(
   type,
-  listeIngrédients,
+  listeIngredients,
   listeAppareils,
   listeUstensils
 ) {
-  //rajout des ingrédients connus dans les recettes
+  //rajout des éléments (i a ou u) connus dans les recettes
+  // elements communs a tous
+  let liste = "";
   if (type == "I") {
-    const btnIngredients = document.querySelector(".btnIngredients");
-    btnIngredients.style.visibility = "hidden";
+    const btn = document.querySelector(".btnIngredients");
+    btn.style.visibility = "hidden";
     const sectiontri = document.getElementById("tri");
     const rechercheTextetri = document.querySelector(".recherche__textetri");
     const rechercheBoutontri = document.querySelector(".recherche__boutontri");
@@ -74,5 +76,41 @@ export function afficheListe(
     rechercheTextetri.textContent = "Rechercher un ingrédient";
     rechercheTextetri.background = "#3282f7";
     rechercheBoutontri.background = "transparent";
+    liste = listeIngredients;
+  }
+  if (type == "A") {
+    const btn = document.querySelector(".btnAppareils");
+    btn.style.visibility = "hidden";
+    const sectiontri = document.getElementById("tri");
+    const rechercheTextetri = document.querySelector(".recherche__textetri");
+    const rechercheBoutontri = document.querySelector(".recherche__boutontri");
+    sectiontri.style.visibility = "visible";
+    sectiontri.style.backgroundColor = "#68d9a4";
+    rechercheTextetri.textContent = "Rechercher un appareil";
+    rechercheTextetri.background = "#68d9a4";
+    rechercheBoutontri.background = "transparent";
+    liste = listeAppareils;
+  }
+  if (type == "U") {
+    const btn = document.querySelector(".btnUstensils");
+    btn.style.visibility = "hidden";
+    const sectiontri = document.getElementById("tri");
+    const rechercheTextetri = document.querySelector(".recherche__textetri");
+    const rechercheBoutontri = document.querySelector(".recherche__boutontri");
+    sectiontri.style.visibility = "visible";
+    sectiontri.style.backgroundColor = "#ed6454";
+    rechercheTextetri.textContent = "Rechercher un ustensil";
+    rechercheTextetri.background = "#ed6454";
+    rechercheBoutontri.background = "transparent";
+    liste = listeUstensils;
+  }
+
+  const listetri = document.querySelector(".ListeTri");
+  console.log(liste);
+  for (let i = 0; i < liste.length; i++) {
+    const unElement = document.createElement("div");
+    unElement.className = "unElement";
+    unElement.textContent = liste[i];
+    listetri.appendChild(unElement);
   }
 }
